@@ -1,0 +1,38 @@
+security:
+    enable_authenticator_manager: true
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        register:
+            pattern: ^/api/register
+            # anonymous: true
+        login:
+            pattern: ^/api/login
+            stateless: true
+            json_login:
+                username_path: email
+                check_path: /api/login
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:   ^/api
+            stateless: true
+            jwt: ~
+            #guard:
+            #    authenticators:
+            #        - lexik_jwt_authentication.jwt_token_authenticator
+
+
+    access_control:
+        - { path: ^/api/login,    roles: PUBLIC_ACCESS }
+        - { path: ^/api/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/doc,      roles: PUBLIC_ACCESS }
+        - { path: ^/api,          roles: IS_AUTHENTICATED_FULLY }
