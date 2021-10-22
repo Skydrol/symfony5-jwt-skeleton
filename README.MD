@@ -1,3 +1,13 @@
+# Events Searcher
+
+This is a simple JWT skeleton in symfony 5.
+
+## Installation
+
+Use the package manager [composer](https://getcomposer.org/) to install and set up the packages.
+
+The steps are listed below.
+
 ### 1 - Run this command in the root folder to install the packages: 
 ```bash
 composer install
