@@ -1,4 +1,4 @@
-# Events Searcher
+# Symfony 5 JWT Skeleton
 
 This is a simple JWT skeleton in symfony 5.
 
